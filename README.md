@@ -1,22 +1,19 @@
-# SHOKH HUB v2
+# SHOKH HUB v3.1 — Repair release
 
-Responsive personal project hub based on the user's cyberpunk reference.
+This is a bug-fix release, not a new product. Maintains v3 features and v2-compatible localStorage keys.
 
-## Run
-Open `index.html` in a browser, or serve the directory via `python -m http.server 8000` and visit `http://localhost:8000`.
+## Deployment to GitHub Pages
+Upload **index.html, style.css, app.js, hub-banner.jpg** into the root of the `main` branch. In Settings → Pages select main / (root). Open https://hirokasimov.github.io/Test-branch/ after deployment succeeds. Force refresh if a cached old page persists.
 
-## v2 upgrades
-- Neon hover effects and animated ambient lighting (respects reduced-motion preference)
-- Time-aware anime banner tint (morning / afternoon / evening / night), based on device local time
-- Mobile search button and optimized navigation
-- Drag-and-drop module and project ordering, saved in localStorage; touch long-press supported (browser-dependent)
-- Browser-local status: online/offline signal, connection type when available, local storage availability, device time. This is **not** external project uptime monitoring.
+The `index.html` includes an inline copy of the JS, so even if `app.js` is accidentally missing on Pages the interface still boots. `app.js` is included separately for maintainability; edit both when changing the app logic.
 
-## Existing functionality
-Six original project URLs, project add/filter/search, notes, tasks, Pomodoro, theme, JSON export/import, visit history.
+## Changes
+- Six colorful module cards and initial project shortcuts have HTML fallback (no blank page if JS fails).
+- Inline JS removes dependency on loading app.js at runtime.
+- Error notice shows uncaught script errors instead of silently leaving blank panels.
+- Mobile tiles are visible in a 2-column grid, with stronger neon and tighter spacing.
+- Tasks have a designed empty state.
+- No fake live network analytics: wave is decorative.
 
-## Data
-Existing localStorage keys for notes, tasks and visits are preserved. Browser-local data does not automatically sync across devices.
-
-## Note
-`hub-banner.jpg` is a crop from the provided reference image, so some text/artifacts may be visible. Replace with a clean licensed artwork for best quality.
+## Limitations
+Live project widgets use local HUB data only; external sites are not connected. Notifications require permission and the HUB tab to remain open. Privacy mode is visual masking, not authentication or encryption. Browser end-to-end validation could not be completed in this environment.
